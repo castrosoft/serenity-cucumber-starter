@@ -1,4 +1,4 @@
-package starter.navigation;
+package starter.pages;
 
 import net.thucydides.core.pages.PageObject;
 
