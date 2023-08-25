@@ -6,9 +6,9 @@ import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.ensure.Ensure;
-import org.junit.Assert;
 import starter.pages.DashboardPage;
 import starter.pages.DemoLoginPage;
+import starter.tasks.EnterCredentials;
 import starter.tasks.NavigateTo;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
@@ -27,13 +27,11 @@ public class LoginStepDefinitions {
     @When("I enter valid credentials")
     public void i_enter_valid_credentials() {
         when(theActorInTheSpotlight()).attemptsTo(
-                Enter.theValue("username").into(DemoLoginPage.USERNAME_TEXTBOX),
-                Enter.theValue("password").into(DemoLoginPage.PASSWORD_TEXTBOX),
-                Click.on(DemoLoginPage.SIGN_IN_BUTTON)
+                EnterCredentials.toTheFields()
         );
     }
-    @Then("I log in successfully")
-    public void i_log_in_successfully() {
+    @Then("The log in is successfully")
+    public void the_log_in_is_successfully() {
         then(theActorInTheSpotlight()).attemptsTo(
                 Ensure.that(DashboardPage.INITIAL_MESSAGE).isDisplayed()
         );
